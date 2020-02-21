@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { Container, Image, Info, Name, Address, Status } from './styles';
 
+import { getDatesOfHour } from '../../../utils';
+
 export default function Restaurant({ name, address, image, hours }) {
 	const [open, setOpen] = useState(false);
 
@@ -13,23 +15,19 @@ export default function Restaurant({ name, address, image, hours }) {
 				hour.days.some(day => day === currentDay)
 			);
 			if (currentHour) {
-				const { from, to } = currentHour;
+				const { from, to } = getDatesOfHour(currentHour);
 
-				const fromDate = new Date();
-				fromDate.setHours(from.substring(0, 2), from.substring(3, 5), 0);
-
-				let toDate = new Date();
-				toDate.setHours(to.substring(0, 2), to.substring(3, 5), 0);
-
-				if (fromDate > toDate)
-					toDate = new Date(toDate.getTime() + 24 * 60 * 60 * 1000);
-
-				const isOpen = currentDate > fromDate && currentDate < toDate;
+				const isOpen = currentDate > from && currentDate < to;
 				setOpen(isOpen);
 
-				setTimeout(() => {
-					setOpen(!isOpen);
-				}, toDate.getTime() - currentDate.getTime());
+				if (isOpen)
+					setTimeout(() => {
+						setOpen(false);
+					}, to.getTime() - currentDate.getTime());
+				else
+					setTimeout(() => {
+						setOpen(true);
+					}, from.getTime() - currentDate.getTime());
 			}
 		}
 	}, [hours]);

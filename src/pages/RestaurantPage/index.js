@@ -15,7 +15,7 @@ import {
 	FoodGroupName
 } from './styles';
 
-import { formatMoneyBRL } from '../../utils';
+import { formatMoneyBRL, parseDayOfWeek } from '../../utils';
 import { getRestaurantById, getMenuByRestaurantId } from '../../services/api';
 
 export default function RestaurantPage() {
@@ -104,18 +104,6 @@ export default function RestaurantPage() {
 			)}
 		</Container>
 	);
-}
-
-const days = new Map();
-days.set(1, 'Domingo');
-days.set(2, 'Segunda');
-days.set(3, 'Terça');
-days.set(4, 'Quarta');
-days.set(5, 'Quinta');
-days.set(6, 'Sexta');
-days.set(7, 'Sábado');
-function parseDayOfWeek(day) {
-	return days.get(day);
 }
 
 function groupMenu(menu) {
