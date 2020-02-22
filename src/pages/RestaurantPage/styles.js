@@ -2,9 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
 	color: #404040;
-	margin: 0px auto 0px 3.5em;
 	max-width: 800px;
 	padding: 1em;
+
+	@media (min-width: 768px) {
+		margin: 0px auto 0px 3.5em;
+	}
 `;
 
 export const Restaurant = styled.div`
@@ -45,15 +48,21 @@ export const RestaurantHour = styled.span`
 
 export const FoodGroup = styled.div`
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 1em;
 	margin: 2em 0px;
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
 `;
 
 export const FoodGroupName = styled.h3`
 	border-bottom: 2px solid #404040;
 	font-size: 1em;
-	grid-column: 1 / 3;
 	padding: 0px 0px 0.5em 1em;
 	text-transform: capitalize;
+
+	@media (min-width: 768px) {
+		grid-column: 1 / 3;
+	}
 `;

@@ -13,8 +13,16 @@ export const Container = styled.form`
 
 	input,
 	label {
-		font-size: 1em;
-		padding: 0.5em 2em;
+		font-size: 0.75em;
+		padding: 0.5em 1em;
+
+		@media (min-width: 562px) {
+			font-size: 1em;
+		}
+
+		@media (min-width: 768px) {
+			padding: 0.5em 2em;
+		}
 	}
 
 	input {
@@ -22,6 +30,10 @@ export const Container = styled.form`
 		border: none;
 		flex: 1;
 		padding-right: 3em;
+	}
+
+	label {
+		white-space: nowrap;
 	}
 
 	button {
@@ -35,5 +47,9 @@ export const Container = styled.form`
 `;
 
 export const Icon = styled(MdSearch)`
-	font-size: 1.5em;
+	font-size: 1em;
+
+	@media (min-width: 562px) {
+		font-size: 1.5em;
+	}
 `;

@@ -15,8 +15,15 @@ export const Greetings = styled.h1`
 
 export const Restaurants = styled.div`
 	display: grid;
-	grid-gap: 3em;
-	grid-template-columns: repeat(3, 1fr);
-	margin: 3em auto;
+	grid-column-gap: 2em;
+	grid-row-gap: 1em;
+	margin: 2em auto;
 	max-width: 1200px;
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media (min-width: 992px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
 `;

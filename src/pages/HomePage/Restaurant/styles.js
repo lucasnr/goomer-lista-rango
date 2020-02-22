@@ -4,6 +4,7 @@ export const Container = styled.div`
 	border-radius: 4px;
 	box-shadow: 0px 2px 4px #ccc;
 	display: flex;
+	margin: 1em;
 	position: relative;
 `;
 
