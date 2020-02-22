@@ -36,10 +36,15 @@ export default function Food({ image, name, price, priceFormatted, sales }) {
 				setTimeout(() => {
 					setHasSale(false);
 				}, to.getTime() - currentDate.getTime());
-			else
+			else {
+				let remainingTime = from.getTime() - currentDate.getTime();
+				if (remainingTime < 0)
+					remainingTime = currentDate.getTime() - from.getTime();
+
 				setTimeout(() => {
 					setHasSale(true);
-				}, from.getTime() - currentDate.getTime());
+				}, remainingTime);
+			}
 		}
 	}, [price, sales]);
 

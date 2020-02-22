@@ -24,10 +24,15 @@ export default function Restaurant({ name, address, image, hours }) {
 					setTimeout(() => {
 						setOpen(false);
 					}, to.getTime() - currentDate.getTime());
-				else
+				else {
+					let remainingTime = from.getTime() - currentDate.getTime();
+					if (remainingTime < 0)
+						remainingTime = currentDate.getTime() - from.getTime();
+
 					setTimeout(() => {
 						setOpen(true);
-					}, from.getTime() - currentDate.getTime());
+					}, remainingTime);
+				}
 			}
 		}
 	}, [hours]);

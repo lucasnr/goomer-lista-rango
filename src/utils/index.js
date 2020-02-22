@@ -18,7 +18,7 @@ export function parseDayOfWeek(day) {
 }
 
 export function getDatesOfHour({ from, to }) {
-	const fromDate = new Date();
+	let fromDate = new Date();
 	fromDate.setHours(from.substring(0, 2), from.substring(3, 5), 0);
 
 	let toDate = new Date();
@@ -31,4 +31,10 @@ export function getDatesOfHour({ from, to }) {
 		from: fromDate,
 		to: toDate
 	};
+}
+
+export function getNextDayOfWeek() {
+	const today = new Date().getDay() + 1;
+	if (today <= 6) return today + 1;
+	else return 1;
 }
